@@ -109,3 +109,4 @@ Melihat penggunaan sumber daya pada Docker Container yang berjalan
 ```bash
 > docker container stats
 ```
+### [Cara upload Local Image to Registry](Upload-Image-To-Registry.md)
