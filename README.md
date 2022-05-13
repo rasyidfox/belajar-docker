@@ -109,4 +109,11 @@ Melihat penggunaan sumber daya pada Docker Container yang berjalan
 ```bash
 > docker container stats
 ```
+
+#### Container Resource Limit
+
+Memberikan limitasi sumber daya pada Container menggunakan --memory dan --cpus
+```bash
+> docker container --name <nama-container> --publish/-p <port-host>:<port-container> --memory <100b(bytes)/k(killobytes)/m(megabytes)/g(gigabytes)> --cpus <limitasi-cpu> <namaimage:tags>
+```
 ### [Cara upload Local Image to Registry](Upload-Image-To-Registry.md)
