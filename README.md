@@ -128,6 +128,12 @@ Bind Mounts merupakan kemampuan melakukan mounting (sharing) file atau folder ya
 | `source`      | Lokasi file atau folder di sistem host   |
 | `destination` | Lokasi file atau folder di container     |
 | `readonly`    | Jika ada, maka file aatau folder hanya bisa dibaca di container, tidak bisa ditulis|
+
+Contoh bind mounting :
+
+```bash
+> docker container create --name <nama-container> --mount "type=bind,source=folder,destination=folder,readonly" <namaimage:tags>
+```
 ### [Cara upload Local Image to Registry](Upload-Image-To-Registry.md)
 
 Referensi :
