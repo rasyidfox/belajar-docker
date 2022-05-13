@@ -116,4 +116,19 @@ Memberikan limitasi sumber daya pada Container menggunakan --memory dan --cpus
 ```bash
 > docker container --name <nama-container> --publish/-p <port-host>:<port-container> --memory <100b(bytes)/k(killobytes)/m(megabytes)/g(gigabytes)> --cpus <limitasi-cpu> <namaimage:tags>
 ```
+### Bind Mount
+
+Bind Mounts merupakan kemampuan melakukan mounting (sharing) file atau folder yang terdapat di sistem host ke container yang terdapat pada docker, fitur ini berguna ketika kita ingin mengirim konfigurasi dari luar container, atau misal menyimpan data yang dibuat di aplikasi di dalam container ke dalam folder di sistem host, jika file atau folder tidak ada di sistem host, secara otomatis akan dibuatkan oleh Docker, untuk melakukan mounting, kita bisa menggunakan parameter --mount ketika membuat container, isi dari parameter --mount memiliki aturan tersendiri 
+
+#### Parameter Mount
+
+| Parameter     | Keterangan                               |
+| ------------- | ---------------------------------------- |
+| `type`        | Tipe Mount, bind atau volume             |    
+| `source`      | Lokasi file atau folder di sistem host   |
+| `destination` | Lokasi file atau folder di container     |
+| `readonly`    | Jika ada, maka file aatau folder hanya bisa dibaca di container, tidak bisa ditulis|
 ### [Cara upload Local Image to Registry](Upload-Image-To-Registry.md)
+
+Referensi :
+[Programmer Zaman Now - Slide Docker Dasar](https://www.youtube.com/watch?v=3_yxVjV88Zk&t=5336s&ab_channel=ProgrammerZamanNow)
