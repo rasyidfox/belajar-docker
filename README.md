@@ -132,9 +132,35 @@ Bind Mounts merupakan kemampuan melakukan mounting (sharing) file atau folder ya
 Contoh bind mounting :
 
 ```bash
-> docker container create --name <nama-container> --mount "type=bind,source=folder,destination=folder,readonly" <namaimage:tags>
+> docker container create --name <nama-container> --publish <port-host>:<port-container> --mount "type=bind,source=folder,destination=folder,readonly (Opsional)" <namaimage:tags>
 ```
-### [Cara upload Local Image to Registry](Upload-Image-To-Registry.md)
+
+### Docker Volume
+Docker Volume berguna untuk menyimpan data, bedanya dengan Bind Mounts. Bind Mounts menyimpan data pada sistem host sedangkan volume di manage oleh docker. Jika container dihapus maka data tetap aman pada volume, cara penggunaan volume sama dengan bind mounting
+
+Membuat volume :
+
+```bash
+docker volume create <nama-volume>
+```
+
+Melihat volume :
+
+```bash
+docker volume ls
+```
+Menghapus volume :
+
+```bash
+docker volume rm <nama-volume>
+```
+
+#### Container Volume
+
+
+### [Membuat Image pada Local Registry](Image-Local-Registry.md)
+### [Upload Local Image to Registry](Upload-Image-To-Registry.md)
+
 
 Referensi :
-[Programmer Zaman Now - Slide Docker Dasar](https://www.youtube.com/watch?v=3_yxVjV88Zk&t=5336s&ab_channel=ProgrammerZamanNow)
+[Programmer Zaman Now](https://www.youtube.com/watch?v=3_yxVjV88Zk&t=5336s&ab_channel=ProgrammerZamanNow)
