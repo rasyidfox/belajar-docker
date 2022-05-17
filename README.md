@@ -136,31 +136,75 @@ Contoh bind mounting :
 ```
 
 ### Docker Volume
-Docker Volume berguna untuk menyimpan data, bedanya dengan Bind Mounts. Bind Mounts menyimpan data pada sistem host sedangkan volume di manage oleh docker. Jika container dihapus maka data tetap aman pada volume, cara penggunaan volume sama dengan bind mounting
+Docker Volume berguna untuk menyimpan data apabila data dalam container dihapus data tidak hilang dan tetap ada pada volume
 
 Membuat volume :
 
 ```bash
-docker volume create <nama-volume>
+> docker volume create <nama-volume>
 ```
 
 Melihat volume :
 
 ```bash
-docker volume ls
+> docker volume ls
 ```
 Menghapus volume :
 
 ```bash
-docker volume rm <nama-volume>
+> docker volume rm <nama-volume>
 ```
 
 #### Container Volume
+Volume yang sudah dibuat dapat digunakan dalam container. Volume sangat efektif ketimbang menggunakan bind mount, jika container dihapus, maka data akan tetap aman di volume. Cara menggunakan volume sama halnya dengan menggunakan bind-mount yaitu menggunakan ``--mount``
+Contoh :
 
+```bash
+> docker container create --name <nama-container> --publish <port-host>:<port-container> --mount "type=volume,source=<nama-volume-yang-telah-dibuat>,destination=folder,readonly (Opsional)" <namaimage:tags>
+```
 
-### [Membuat Image pada Local Registry](Image-Local-Registry.md)
-### [Upload Local Image to Registry](Upload-Image-To-Registry.md)
+#### Backup Volume
 
+```bash
+> docker container run --rm --name ubuntu --mount "type=bind,source=<folder-tempat-backup-local>,destination=<destinasi>" --mount "type=volume,source=<nama-volume>,destination=<destinasi>" ubuntu:latest tar cvf /<destinasi-bind>/backup.tar.gz /<destinasi-volume>
+```
 
-Referensi :
+#### Restore Volume
+
+```bash
+> docker container run --rm --name ubuntu --mount "type=bind,source=<folder-tempat-backup-local>,destination=<destinasi>" --mount "type=volume,source=<nama-volume>,destination=<destinasi>" ubuntu:latest bash -c cd /<destinasi-volume> && tar xvf /destinasi-bind>/backup.tar.gz
+```
+
+### Docker Network
+
+| Tipe          | Keterangan                               |
+| ------------- | ---------------------------------------- |
+| `bridge`      | Driver yang digunakan untuk membuat network secara virtual yang memungkinkan container yang terkoneksi di bridge network yang sama saling berkomunikasi   |    
+| `host`        | Driver yang digunakan untuk membuat network yang sama dengan sistem host. host hanya jalan di Docker Linux, tidak bisa digunakan di Mac atau Windows |
+| `none`        | Driver untuk membuat network yang tidak bisa berkomunikasi     |
+
+Melihat Network :
+```bash
+> docker network ls
+```
+Membuat Network :
+
+```bash
+> docker network create --driver <bridge/host/none> <nama-network>
+```
+
+Menghapus Network :
+```bash
+> docker network rm <nama-network>
+```
+### Container Network
+### Inspect
+### Prune
+
+#### [Membuat Image pada Local Registry](Image-Local-Registry.md)
+#### [Upload Local Image menuju Registry](Upload-Image-To-Registry.md)
+#### [Menjalankan Ubuntu pada Docker](Ubuntu-Docker.md)
+
+## Referensi :
 [Programmer Zaman Now](https://www.youtube.com/watch?v=3_yxVjV88Zk&t=5336s&ab_channel=ProgrammerZamanNow)
+
