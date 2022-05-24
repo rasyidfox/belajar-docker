@@ -18,6 +18,12 @@ Menghapus Docker Image dari Local Registry
 > docker image rm <namaimage:tags>
 ```
 
+Menghapus semua docker image dari local registry
+
+```bash
+> docker rmi $(docker images -q)
+```
+
 ### Docker Container
 
 Membuat container 
@@ -51,6 +57,11 @@ Menghapus container
 
 ```bash
 > docker container rm <nama-container>
+```
+Menghapus semua container 
+
+```bash
+> docker container rm $(ps -aq )
 ```
 #### Container Log
 
